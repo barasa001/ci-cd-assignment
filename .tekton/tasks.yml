@@ -8,6 +8,8 @@ spec:
       image: alpine:latest
       script:
         - echo "Cleaning up resources"
+        - echo "Running additional cleanup tasks here"
+        - echo "Done with cleanup"
 
 ---
 
@@ -21,4 +23,6 @@ spec:
       image: python:3.9
       script:
         - pip install nose
-        - nosetests
+        - pip install coverage
+        - echo "Running nose tests with coverage"
+        - nosetests --with-coverage --cover-package=app --cover-xml --cover-html --verbosity=2
